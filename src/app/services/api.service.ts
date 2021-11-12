@@ -14,7 +14,7 @@ export class ApiService {
         return this.httpClient.get(`${this.baseUrl}/api_category.php`);
     }
 
-    getQuestion(amount: number) {
-        return this.httpClient.get(`${this.baseUrl}/api.php?amount=${amount}`)
+    getQuestion(amount: number, categoryId: number) {
+        return this.httpClient.get(`${this.baseUrl}/api.php?amount=${amount}&&category=${categoryId}`)
     }
 }

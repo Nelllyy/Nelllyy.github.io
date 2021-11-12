@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoryModel } from 'src/app/models/category.model';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -14,17 +15,20 @@ export class HomeComponent implements OnInit {
   categories: CategoryModel[] = [];
   selectedCategory: CategoryModel;
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.getCategories();
-    this.getQuestions();
   }
 
   start() {
+    this.router.navigate(['/question'], { queryParams: { category: this.selectedCategory.id, page: 1 } });
   }
 
-  dropDownToggle( event: Event) {
+  dropDownToggle(event: Event) {
     event.stopPropagation();
     this.dropdownToggle = !this.dropdownToggle
   }
@@ -35,15 +39,9 @@ export class HomeComponent implements OnInit {
   }
 
   getCategories() {
-    this.apiService.getCategories().subscribe(({trivia_categories}: any) => {
-        this.categories = trivia_categories;
+    this.apiService.getCategories().subscribe(({ trivia_categories }: any) => {
+      this.categories = trivia_categories;
     });
-  }
-
-  getQuestions() {
-      this.apiService.getQuestion(10).subscribe(({ results }: any) => {
-          console.log(results);
-      });
   }
 
 }

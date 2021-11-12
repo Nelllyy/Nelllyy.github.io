@@ -1,0 +1,10 @@
+<div class="container" *ngIf="currentQuestion">
+    <div class="header"> Question {{ currentQuestionNumber < 10 ? '0' + currentQuestionNumber : currentQuestionNumber }}</div>
+    <div class="level" [class]="'color-' + currentQuestion.difficulty">{{ currentQuestion.difficulty }}</div>
+
+    <div class="question">{{ currentQuestion.question }}</div>
+
+    <div class="answers">
+        <div *ngFor="let answer of answers" class="answer" (click)="selectAnswer(answer)">{{answer}}</div>
+    </div>
+</div>
