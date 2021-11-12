@@ -6,7 +6,7 @@
 
         <div class="dropdown">
             <div class="dropdown-input">
-                <input placeholder="Category" (click)="dropDownToggle($event)" [value]="selectedCategory?.name">
+                <input placeholder="Category" [class.enabled]="dropdownToggle" (click)="dropDownToggle($event)" [value]="selectedCategory?.name" readonly>
                 <div class="arrow-up" *ngIf='dropdownToggle'>︿</div>
                 <div class="arrow-down"  *ngIf='!dropdownToggle'>﹀</div>
             </div>

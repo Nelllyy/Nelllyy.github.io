@@ -41,8 +41,8 @@ export class HomeComponent implements OnInit {
   }
 
   getQuestions() {
-      this.apiService.getCategories().subscribe(data => {
-          console.log(data);
+      this.apiService.getQuestion(10).subscribe(({ results }: any) => {
+          console.log(results);
       });
   }
 

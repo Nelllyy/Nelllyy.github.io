@@ -27,16 +27,22 @@
                 position: relative;
 
                 input {
-                    width          : 320px;
+                    width          : 305px;
                     height         : 31px;
-                    border-radius  : 56px;
+                    border-radius  : 18px;
                     padding        : 13px 16px;
                     margin-top     : 36px;
                     color          : #354153;
                     font-size      : 18px;
-                    border         : 2px solid #95B6A9;
+                    border         : 2px solid #95b6a973;
                     outline        : unset;
+                    background     : #F6F7F8;
+                    box-shadow     : 0px 4px 10px rgba(0, 0, 0, 0.04);
                     cursor         : pointer;
+
+                    &.enabled {
+                        border     : 2px solid #95B6A9;
+                    }
                 }
 
                 .arrow-up {
@@ -106,9 +112,10 @@
 
                 
         &:disabled {
-            opacity: 0.5;
-            pointer-events: unset;
-            cursor: not-allowed;
+            background-color : #F6F7F8;
+            color            : #C4C4C4;
+            pointer-events   : unset;
+            cursor           : not-allowed;
         }
     }
 }
