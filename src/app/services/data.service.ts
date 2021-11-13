@@ -11,7 +11,7 @@ export class DataService {
   readonly current_quiz_key = 'currentAnswer';
   readonly current_questions_key = 'currentQuestions';
 
-  private lastQuizScore;
+  private lastQuizScore: string;
   public quizes: QuizModel[] = [];
 
   setQuizesToStorage() {

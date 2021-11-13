@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { QuestionComponent } from './components/question/question.component';
 import { ResultComponent } from './components/result/result.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScoreTableComponent } from './components/score-table/score-table.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,15 @@ import { ResultComponent } from './components/result/result.component';
     ClickOutsideDirective,
     QuestionComponent,
     ResultComponent,
+    ScoreTableComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
