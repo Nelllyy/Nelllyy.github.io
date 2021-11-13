@@ -5,4 +5,5 @@ export class QuestionModel {
     incorrect_answers: string[];
     question: string;
     type: string;
+    answers: string[];
 }

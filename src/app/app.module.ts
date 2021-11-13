@@ -8,6 +8,7 @@ import { HttpClientModule } from  '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { QuestionComponent } from './components/question/question.component';
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { QuestionComponent } from './components/question/question.component';
     HomeComponent,
     ClickOutsideDirective,
     QuestionComponent,
+    ResultComponent,
   ],
   imports: [
     BrowserModule,

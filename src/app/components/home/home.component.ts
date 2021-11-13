@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '@app/services/data.service';
 import { CategoryModel } from 'src/app/models/category.model';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -11,13 +11,14 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HomeComponent implements OnInit {
 
-  dropdownToggle: boolean = false;
-  categories: CategoryModel[] = [];
-  selectedCategory: CategoryModel;
+  public dropdownToggle: boolean = false;
+  public categories: CategoryModel[] = [];
+  public selectedCategory: CategoryModel;
 
   constructor(
     private apiService: ApiService,
     private router: Router,
+    private dataService: DataService,
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   start() {
+    this.dataService.clearStorage();
     this.router.navigate(['/question'], { queryParams: { category: this.selectedCategory.id, page: 1 } });
   }
 

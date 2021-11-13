@@ -5,6 +5,6 @@
     <div class="question">{{ currentQuestion.question }}</div>
 
     <div class="answers">
-        <div *ngFor="let answer of answers" class="answer" (click)="selectAnswer(answer)">{{answer}}</div>
+        <div *ngFor="let answer of currentQuestion.answers" class="answer" (click)="selectAnswer(answer)">{{answer}}</div>
     </div>
 </div>

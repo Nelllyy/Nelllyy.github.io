@@ -9,10 +9,6 @@
     font-family: Barlow;
 }
 
-html, body { 
-    height: 100%;
-}
-
 body {
     margin            : 0;
     font-family       : Barlow;
@@ -33,4 +29,29 @@ body {
     font-size   : 50px;
     line-height : 75px;
     margin-top  : 134px;
+}
+
+.btn {
+    margin-top         : 99px;
+    width              : 150px;
+    height             : 56px;
+    display            : flex;
+    justify-content    : center;
+    align-items        : center;
+    padding            : 16px 20px 18px;
+    background-color   : #3A7859;
+    border-radius      : 18px;
+    border             : unset;
+    color              : #fff;
+    cursor             : pointer;
+    font-size          : 18px;
+    line-height        : 22px;
+
+            
+    &:disabled {
+        background-color : #F6F7F8;
+        color            : #C4C4C4;
+        pointer-events   : unset;
+        cursor           : not-allowed;
+    }
 }
