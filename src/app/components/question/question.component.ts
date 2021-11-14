@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AnswerModel } from '@app/models/answer.model';
 import { QuizModel } from '@app/models/quiz.model';
 import { DataService } from '@app/services/data.service';
 import { QuestionModel } from 'src/app/models/question.model';
@@ -57,8 +58,8 @@ export class QuestionComponent implements OnInit, OnChanges {
   }
 
   selectAnswer(answer: string) {
-    const currentAnswer = this.quiz.answers[this.currentQuestionNumber - 1];
-    
+    const  currentAnswer =  this.quiz?.answers[this.currentQuestionNumber - 1];
+   
     if (currentAnswer) {
       currentAnswer.userAnswer = answer;
       currentAnswer.isAnswerCorrect = answer === currentAnswer.correctAnswer;
@@ -94,7 +95,8 @@ export class QuestionComponent implements OnInit, OnChanges {
 
     if (this.questions) {
       this.currentQuestion = this.questions[this.currentQuestionNumber - 1];
-      this.quiz = this.dataService.getCurrentQuiz();
+      this.quiz = this.dataService.getCurrentQuiz() || new AnswerModel();
+      
       return;
     }
 
@@ -107,7 +109,6 @@ export class QuestionComponent implements OnInit, OnChanges {
 
       this.currentQuestion = this.questions[this.currentQuestionNumber - 1];
 
-      this.dataService.setCurrentQuestions(this.questions);
 
       this.quiz.answers = this.questions.map(item => {
         return ({
@@ -119,6 +120,8 @@ export class QuestionComponent implements OnInit, OnChanges {
         });
       })
 
+      this.dataService.setCurrentQuestions(this.questions);
+      this.dataService.setCurrentQuiz(this.quiz);
 
     });
   }
