@@ -50,6 +50,8 @@ $green: #42A976;
             overflow       : hidden;
             white-space    : nowrap;
             text-overflow  : ellipsis;
+            animation      : type 0.6s steps(100, end); 
+
 
             
             &:hover {
@@ -73,3 +75,19 @@ $green: #42A976;
 .color-hard {
     background-color: #EF7D54;
 }
+
+@keyframes type{ 
+    from { width: 0; } 
+  } 
+  
+  @keyframes type2{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  } 
+  
+  @keyframes type3{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  }

@@ -5,10 +5,10 @@
         <div class="subheader">Pick a Category</div>
 
         <div class="dropdown">
-            <div class="dropdown-input">
-                <input placeholder="Category" [class.enabled]="dropdownToggle" (click)="dropDownToggle($event)" [value]="selectedCategory?.name" readonly>
-                <div class="arrow-up" *ngIf='dropdownToggle'>︿</div>
-                <div class="arrow-down"  *ngIf='!dropdownToggle'>﹀</div>
+            <div class="dropdown-input" (click)="dropDownToggle($event)" >
+                <input placeholder="Category" [class.enabled]="dropdownToggle" [value]="selectedCategory?.name" readonly>
+                <i class="material-icons" *ngIf='dropdownToggle'>keyboard_arrow_up</i>
+                <i class="material-icons" *ngIf='!dropdownToggle'>keyboard_arrow_down</i>
             </div>
             
             <div class="dropwdown-wrap" *ngIf="dropdownToggle" app-clickOutside (clickOutside)="dropdownToggle = false">
