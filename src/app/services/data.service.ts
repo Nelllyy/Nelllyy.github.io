@@ -12,10 +12,10 @@ export class DataService {
   readonly current_questions_key = 'currentQuestions';
 
   private lastQuizScore: string;
-  public quizes: QuizModel[] = [];
+  private quizes: QuizModel[] = [];
 
-  setQuizesToStorage() {
-    localStorage.setItem( this.quize_key, JSON.stringify(this.quizes) );
+  setQuizesToStorage(quizes: QuizModel[]) {
+    localStorage.setItem( this.quize_key, JSON.stringify(quizes) );
   }
 
   setCurrentQuestions(questions: QuestionModel[]) {

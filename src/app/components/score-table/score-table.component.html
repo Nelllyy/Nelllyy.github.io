@@ -1,41 +1,82 @@
-
 <div class="container">
 
-    <div class="header">Scores</div>
-    <div class="table-container mat-elevation-z8" *ngFor="let quiz of quizes;let i = index">
-        <div>Quiz </div>
-        <table mat-table [dataSource]="getTransactions(quiz)">
+  <div class="header">Scores</div>
+  <div class="table-container mat-elevation-z8" *ngFor="let quiz of quizes;let i = index">
+    <div class="header sub-header">Quiz {{i < 10 ? '0' + ( i + 1) : i + 1}} ( Score {{quiz.score}} )</div>
+    <table mat-table [dataSource]="getTransactions(quiz)">
+      
+      <ng-container matColumnDef="Number">
+        <th mat-header-cell *matHeaderCellDef> Nº </th>
+    <td mat-cell *matCellDef="let transaction" [class.a]="isAnswerCorrect(transaction)"> {{transaction.Number}} </td>
+      </ng-container>
 
-          <ng-container matColumnDef="Question">
-            <th mat-header-cell *matHeaderCellDef> Question </th>
-            <td mat-cell *matCellDef="let transaction"> {{transaction.Question}} </td>
-            <td mat-footer-cell *matFooterCellDef> Score </td>
-          </ng-container>
-      
-          <ng-container matColumnDef="Answer_1">
-            <th mat-header-cell *matHeaderCellDef> Answer_1 </th>
-            <td mat-cell *matCellDef="let transaction"> {{transaction.Answer_1}} </td>
-            <td mat-footer-cell *matFooterCellDef> {{ 0 | currency}} </td>
-          </ng-container>
-          <ng-container matColumnDef="Answer_2">
-            <th mat-header-cell *matHeaderCellDef> Answer_2 </th>
-            <td mat-cell *matCellDef="let transaction"> {{transaction.Answer_2}} </td>
-            <td mat-footer-cell *matFooterCellDef> {{ 0 | currency}} </td>
-          </ng-container>
-          <ng-container matColumnDef="Answer_3">
-            <th mat-header-cell *matHeaderCellDef> Answer_3 </th>
-            <td mat-cell *matCellDef="let transaction"> {{transaction.Answer_3}} </td>
-            <td mat-footer-cell *matFooterCellDef> {{ 0 | currency}} </td>
-          </ng-container>
-          <ng-container matColumnDef="Answer_4">
-            <th mat-header-cell *matHeaderCellDef> Answer_4 </th>
-            <td mat-cell *matCellDef="let transaction"> {{transaction.Answer_4}} </td>
-            <td mat-footer-cell *matFooterCellDef> {{ 0 | currency}} </td>
-          </ng-container>
-      
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
-        </table>
-      </div>
+      <ng-container matColumnDef="Question">
+        <th mat-header-cell *matHeaderCellDef> Question </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.Question}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Answer_1">
+        <th mat-header-cell *matHeaderCellDef> Answer 01 </th>
+        <td mat-cell *matCellDef="let transaction">
+            <div class="answer">
+                <span> {{transaction.Answer_1}} </span>
+                <span class="material-icons right-icon" *ngIf="transaction.Answer_1 === transaction.correctAnswer">
+                    check_circle_outline
+                </span>    
+                <span class="material-icons wrong-icon" *ngIf="transaction.correctAnswer !== transaction.userAnswer && transaction.Answer_1 === transaction.userAnswer">
+                    highlight_off
+                </span>
+            </div>
+
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Answer_2">
+        <th mat-header-cell *matHeaderCellDef> Answer 02 </th>
+        <td mat-cell *matCellDef="let transaction"> 
+            <div class="answer">
+                <span>{{transaction.Answer_2}}</span> 
+                <span class="material-icons right-icon" *ngIf="transaction.Answer_2 === transaction.correctAnswer">
+                    check_circle_outline
+                </span>    
+                <span class="material-icons wrong-icon" *ngIf="transaction.correctAnswer !== transaction.userAnswer && transaction.Answer_2 === transaction.userAnswer">
+                    highlight_off
+                </span>
+            </div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Answer_3">
+        <th mat-header-cell *matHeaderCellDef> Answer 03 </th>
+        <td mat-cell *matCellDef="let transaction" > 
+            <div class="answer">
+                <span>{{transaction.Answer_3}}</span> 
+                <span class="material-icons right-icon" *ngIf="transaction.Answer_3 === transaction.correctAnswer">
+                    check_circle_outline
+                </span>    
+                <span class="material-icons wrong-icon" *ngIf="transaction.correctAnswer !== transaction.userAnswer && transaction.Answer_3 === transaction.userAnswer">
+                    highlight_off
+                </span>
+            </div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Answer_4">
+        <th mat-header-cell *matHeaderCellDef> Answer 04 </th>
+        <td mat-cell *matCellDef="let transaction"> 
+            <div class="answer">
+                <span>{{transaction.Answer_4}} </span>
+                <span class="material-icons right-icon" *ngIf="transaction.Answer_4 === transaction.correctAnswer">
+                    check_circle_outline
+                </span> 
+                <span class="material-icons wrong-icon"  *ngIf="transaction.correctAnswer !== transaction.userAnswer && transaction.Answer_4 === transaction.userAnswer">
+                    highlight_off
+                </span>
+            </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class]="isAnswerCorrect(row) ? 'right' : 'wrong'">
+      </tr>
+    </table>
+  </div>
+  <button class="btn" routerLink="/home">Back to home</button>
 </div>

@@ -1,21 +1,88 @@
-.table-container {
-    width      : 1080px;
-    overflow   : auto;
-    margin-top : 100px;
+.container {
 
-    &::-webkit-scrollbar {
-        display: none !important;
+    .header {
+        margin-bottom: 100px;
     }
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  tr.mat-footer-row {
-    font-weight: bold;
-  }
-  
-  .mat-table-sticky {
-    border-top: 1px solid #e0e0e0;
-  }
+
+    .table-container {
+        width         : 80%;
+        margin-bottom : 100px;
+
+        .mat-table {
+            overflow      : auto;
+            display       : block;
+
+            &::-webkit-scrollbar {
+                background-color: #d8d8d8;
+                height: 8px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #42a97677;
+            }
+        }
+
+        .mat-cell,
+        .mat-header-cell {
+            word-wrap       : initial;
+            display         : table-cell;
+            padding         : 0px 36px;
+            line-break      : unset;
+            width           : auto;
+            white-space     : nowrap;
+            overflow        : hidden;
+            vertical-align  : middle;
+
+            .answer {
+                display: flex;
+                align-items: center;
+
+                .material-icons {
+                    margin: 10px;
+                }
+                & .right-icon {
+                    color: green;
+                }
+            
+                & .wrong-icon {
+                    color: red;
+                }
+            }
+        }
+
+        
+        .right {
+            background-color: rgba(0, 128, 0, 0.192);
+        }
+        .wrong {
+            background-color: rgba(255, 0, 0, 0.219);
+        }
+    
+        .sub-header {
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+            margin          : 0;
+            font-size       : 35px;
+        }
+        table {
+            width: 100%;
+          }
+          
+          tr.mat-footer-row {
+            font-weight: bold;
+          }
+          
+          .mat-table-sticky {
+            border-top: 1px solid #e0e0e0;
+          }
+
+      }
+      
+      .btn {
+          margin: 0px 0px 50px;
+      }
+
+
+}
+

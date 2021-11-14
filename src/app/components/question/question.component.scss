@@ -47,6 +47,9 @@ $green: #42A976;
             margin-right   : 10px;
             transition     : all 500ms ease;
             margin-bottom  : 10px;
+            overflow       : hidden;
+            white-space    : nowrap;
+            text-overflow  : ellipsis;
 
             
             &:hover {

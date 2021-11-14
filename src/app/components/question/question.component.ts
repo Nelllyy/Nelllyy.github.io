@@ -18,6 +18,7 @@ export class QuestionComponent implements OnInit, OnChanges {
   public answers: string[] = [];
   public quiz = new QuizModel();
   public scoreCounter: number = 0;
+
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
@@ -69,8 +70,9 @@ export class QuestionComponent implements OnInit, OnChanges {
     if (this.currentQuestionNumber == this.questions.length) {
       this.quiz.score = `${this.scoreCounter}/${this.questions.length}`
       this.dataService.setLastQuizScore(this.quiz.score);
-      this.dataService.quizes.push(this.quiz);
-      this.dataService.setQuizesToStorage();
+      const quizes = this.dataService.getQuizesFromStorage();
+      quizes.push(this.quiz);
+      this.dataService.setQuizesToStorage(quizes);
       this.dataService.clearStorage();
       this.router.navigate(['/result']);
       return;

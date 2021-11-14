@@ -22,20 +22,7 @@
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
       "paths": {
-        "@environment/*": ["environments/*"],
-        "@platform/*": ["src/app/platform/*"],
-        "@decorators/*": ["src/app/platform/decorators/*"],
-        "@guards/*": ["src/app/platform/guards/*"],
-        "@helpers/*": ["src/app/platform/helpers/*"],
-        "@interfaces/*": ["src/app/platform/interfaces/*"],
-        "@models/*": ["src/app/platform/models/*"],
-        "@modules/*": ["src/app/modules/*"],
-        "@storage/*": ["src/app/platform/storage/*"],
-        "@enums/*": ["src/app/platform/enums/*"],
-        "@shared/*": ["src/app/platform/shared-modules/*"],
-        "@pipes/*": ["src/app/platform/pipes/*"],
         "@directives/*": ["src/app/platform/directives/*"],
-        "@api/*": ["src/app/platform/api/*"],
         "@app/*": ["src/app/*"],
         "@assets/*": ["src/assets/*"]
       }
