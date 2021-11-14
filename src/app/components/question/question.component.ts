@@ -71,7 +71,7 @@ export class QuestionComponent implements OnInit, OnChanges {
     if (this.currentQuestionNumber == this.questions.length) {
       this.quiz.score = `${this.scoreCounter}/${this.questions.length}`
       this.dataService.setLastQuizScore(this.quiz.score);
-      const quizes = this.dataService.getQuizesFromStorage();
+      const quizes = this.dataService.getQuizesFromStorage() || [];
       quizes.push(this.quiz);
       this.dataService.setQuizesToStorage(quizes);
       this.dataService.clearStorage();
